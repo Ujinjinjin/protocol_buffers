@@ -5,25 +5,52 @@ option go_package = "github.com/ujinjinjin/services/user";
 package user_service;
 
 service UserService {
-    rpc CreateUser(CreateUserRequest) returns (CreateUserReply);
+    rpc GetUser(GetUserRequest) returns (GetUserReply);
+    // rpc GetUserList(GetUserListRequest) returns (GetUserListReply);
 }
 
-// User info
-message CreateUserRequest {
-    // First name
-    string first_name = 1;
-
-    // Last name
-    string last_name = 2;
-
-    // Middle name
-    string middle_name = 3;
-
-    // Email address
-    string email = 4;
-}
-
-message CreateUserReply {
+message User {
     // User ID
     int32 id = 1;
+
+    // First name
+    string first_name = 2;
+
+    // Last name
+    string last_name = 3;
+
+    // Middle name
+    string middle_name = 4;
+
+    // Email address
+    string email = 5;
+}
+
+// Get user request
+message GetUserRequest {
+    // User ID
+    int32 id = 1;
+}
+
+// Get user reply
+message GetUserReply {
+    // User
+    User user = 1;
+}
+
+// Get user list request
+message GetUserListRequest {
+    // User
+    repeated int32 user_id_list = 1 [packed=true];
+
+    // Last name
+    string username = 2;
+
+    // Email address
+    string email = 3;
+}
+
+message GetUserListReply {
+    // User
+    repeated User user_list = 1;
 }
