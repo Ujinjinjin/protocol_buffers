@@ -11,7 +11,7 @@ service UserService {
 
 message User {
     // User ID
-    int32 id = 1;
+    int32 user_id = 1;
 
     // First name
     string first_name = 2;
@@ -29,7 +29,7 @@ message User {
 // Get user request
 message GetUserRequest {
     // User ID
-    int32 id = 1;
+    int32 user_id = 1;
 }
 
 // Get user reply
