@@ -6,7 +6,7 @@ package user_service;
 
 service UserService {
     rpc GetUser(GetUserRequest) returns (GetUserReply);
-    // rpc GetUserList(GetUserListRequest) returns (GetUserListReply);
+    rpc GetUserList(GetUserListRequest) returns (GetUserListReply);
 }
 
 message User {
@@ -24,12 +24,18 @@ message User {
 
     // Email address
     string email = 5;
+    
+    // Is deleted
+    bool is_deleted = 6;
 }
 
 // Get user request
 message GetUserRequest {
     // User ID
     int32 user_id = 1;
+
+    // Is deleted
+    BoolFilter is_deleted = 2;
 }
 
 // Get user reply
@@ -48,9 +54,20 @@ message GetUserListRequest {
 
     // Email address
     string email = 3;
+
+    // Is deleted
+    BoolFilter is_deleted = 4;
 }
 
+// Get user list reply
 message GetUserListReply {
     // User
     repeated User user_list = 1;
 }
+
+// Boolean filter
+enum BoolFilter {
+    None = 0;
+    True = 1;
+    False = 2;
+  }
