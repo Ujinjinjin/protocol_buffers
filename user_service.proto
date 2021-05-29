@@ -5,7 +5,10 @@ option go_package = "github.com/ujinjinjin/services/user";
 package user_service;
 
 service UserService {
+    // get single user that fits given filter
     rpc GetUser(GetUserRequest) returns (GetUserReply);
+
+    // get list of users that fit given filter
     rpc GetUserList(GetUserListRequest) returns (GetUserListReply);
 }
 
